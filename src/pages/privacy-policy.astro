@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<Layout title="Privacy Policy | Simone Sgarro Design Studio">
+  <Header />
+
+  <main class="pt-28 md:pt-36 pb-24 px-6 max-w-4xl mx-auto font-sans text-ink">
+    <h1 class="font-serif text-4xl md:text-6xl mb-8">Privacy Policy</h1>
+    
+    <div class="space-y-6 text-body-lg leading-relaxed opacity-90">
+      <p>Ultimo aggiornamento: 9 Settembre 2026</p>
+
+      <h2 class="text-2xl font-bold font-serif pt-4">1. Titolare del Trattamento dei Dati</h2>
+      <p>
+        Il Titolare del Trattamento è <strong>Simone Sgarro Design Studio</strong>.<br />
+        Email di contatto: <a href="mailto:sgarrodesign@gmail.com" class="underline">sgarrodesign@gmail.com</a>
+      </p>
+
+      <h2 class="text-2xl font-bold font-serif pt-4">2. Tipologia di Dati Raccolti</h2>
+      <p>
+        Attraverso il modulo di contatto presente sul sito raccogliamo i seguenti dati forniti volontariamente dall'utente:
+      </p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Nome e Cognome</li>
+        <li>Indirizzo Email</li>
+        <li>Numero di telefono (opzionale)</li>
+        <li>Nome dell'azienda (opzionale)</li>
+        <li>Messaggio/Contenuto della richiesta</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold font-serif pt-4">3. Finalità del Trattamento</h2>
+      <p>
+        I dati raccolti vengono utilizzati esclusivamente per rispondere alle richieste di informazioni, preventivi o collaborazioni inviate dall'utente tramite il modulo di contatto.
+      </p>
+
+      <h2 class="text-2xl font-bold font-serif pt-4">4. Servizi di Terze Parti</h2>
+      <p>
+        Per l'erogazione del sito e la gestione delle comunicazioni ci avvaliamo dei seguenti servizi:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Netlify:</strong> Servizio di hosting del sito web.</li>
+        <li><strong>Web3Forms:</strong> Servizio di elaborazione dei moduli di contatto per l'inoltro delle email. I dati inseriti nel form transitano attraverso Web3Forms al solo scopo di recapitare il messaggio.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold font-serif pt-4">5. Diritti dell'Utente</h2>
+      <p>
+        In conformità al GDPR, l'utente ha il diritto di accedere, rettificare, cancellare o richiedere la limitazione del trattamento dei propri dati personali in qualsiasi momento inviando una mail a <a href="mailto:sgarrodesign@gmail.com" class="underline">sgarrodesign@gmail.com</a>.
+      </p>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -3,25 +3,25 @@ const projects = [
   {
     client: 'OINK BIKE',
     title: 'The joy of riding your dream bike',
-    image: '/images/projects/oink-thumbnails.jpg',
+    image: '/images/carousel/oink-thumbnails.jpg',
     href: '/work/oink-bike',
   },
   {
     client: 'kangrats',
     title: 'Designing a new way to job finding',
-    image: '/images/projects/kangrats-thumbnails.jpg',
+    image: '/images/carousel/kangrats-thumbnails.jpg',
     href: '/work/kangrats',
   },
   {
     client: 'monde',
     title: 'Elite brand sport',
-    image: '/images/projects/monde-thumbnails.jpg',
+    image: '/images/carousel/monde-thumbnails.jpg',
     href: '/work/monde',
   },
   {
     client: 'see all',
     title: 'Want to see more projects?',
-    image: '/images/projects/ssd-studio-thumbnails.jpg',
+    image: '/images/carousel/oink-thumbnails.jpg',
     href: '/work',
   },
 ];
@@ -37,7 +37,7 @@ const projects = [
           class="shrink-0 w-[85vw] sm:w-[50vw] md:w-[45vw] lg:w-[38vw] xl:w-[34vw] group block"
         >
           <!-- Contenitore Immagine (Mostra <img> se c'è project.image, altrimenti SVG) -->
-          <div class="w-full aspect-[4/3] rounded-3xl md:rounded-[2.5rem] overflow-hidden bg-[#e5e5e5] mb-5 flex items-center justify-center border border-black/5 relative">
+          <div class="w-full aspect-4/3 rounded-3xl md:rounded-[2.5rem] overflow-hidden bg-[#e5e5e5] mb-5 flex items-center justify-center border border-black/5 relative">
             {project.image ? (
               <img 
                 src={project.image} 

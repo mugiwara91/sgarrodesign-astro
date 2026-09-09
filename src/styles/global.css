@@ -8,8 +8,7 @@
   --color-ink: #0F0F10;
 
   /* Font Families */
-  --font-display: "Gambarino", serif;
-  --font-heading: "Funnel Display", sans-serif;
+  --font-display: "Instrument Serif", serif;
   --font-sans: "Funnel Sans", sans-serif;
   --font-mono: "DM Mono", monospace;
 
@@ -24,7 +23,7 @@
 
 /* 1. FONT SERIF */
 @font-face {
-  font-family: 'Gambarino';
+  font-family: 'Instrument Serif';
   src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
@@ -66,6 +65,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 
 /* Base Styles */
 html {
