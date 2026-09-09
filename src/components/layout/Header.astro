@@ -37,28 +37,36 @@ const navLinks = [
       class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 relative z-[60] focus:outline-none"
       aria-label="Apri menu"
     >
-      <span class="bar w-8 h-[2px] bg-white transition-all duration-300"></span>
-      <span class="bar w-8 h-[2px] bg-white transition-all duration-300"></span>
-      <span class="bar w-8 h-[2px] bg-white transition-all duration-300"></span>
+      <span class="bar w-8 h-[2px] bg-brand transition-all duration-500"></span>
+      <span class="bar w-8 h-[2px] bg-brand transition-all duration-500"></span>
+      <span class="bar w-8 h-[2px] bg-brand transition-all duration-500"></span>
     </button>
 
     <!-- MENU OVERLAY MOBILE -->
     <div
       id="mobile-menu"
-      class="fixed inset-0 w-screen h-screen bg-black/95 backdrop-blur-md flex flex-col justify-center items-center gap-8 text-2xl font-bold transition-all duration-300 opacity-0 pointer-events-none md:hidden z-50 overflow-hidden"
+      class="fixed inset-0 w-screen h-screen bg-black/95 backdrop-blur-md flex flex-col justify-center items-center gap-8 md:hidden z-50 overflow-hidden transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] translate-x-full"
     >
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class={
-            link.isCta
-              ? 'mobile-link bg-orange text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-xl mt-4'
-              : 'mobile-link text-white hover:opacity-70 transition-opacity'
-          }
-        >
-          {link.label}
-        </a>
-      ))}
+      {navLinks.map((link, linkIdx) => {
+        const letters = link.label.split('');
+        return (
+          <a
+            href={link.href}
+            data-link-index={linkIdx}
+            class={
+              link.isCta
+                ? 'mobile-link cta-btn inline-block text-white px-8 py-3 rounded-full hover:opacity-90 transition-all duration-500 ease-out text-2xl font-bold mt-4 '
+                : 'mobile-link block text-white hover:opacity-70 transition-opacity text-4xl sm:text-5xl font-bold tracking-tight text-center'
+            }
+          >
+            {letters.map((char) => (
+              <span class="menu-char inline-block opacity-0 -translate-x-3 transition-all duration-300 ease-out">
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            ))}
+          </a>
+        );
+      })}
     </div>
   </div>
 </header>
@@ -69,6 +77,7 @@ const navLinks = [
     const toggleBtn = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu') as HTMLElement | null;
     const mobileLinks = document.querySelectorAll('.mobile-link');
+    const ctaBtn = document.querySelector('.cta-btn') as HTMLElement | null;
     const bars = toggleBtn?.querySelectorAll('.bar');
 
     if (!toggleBtn || !mobileMenu) return;
@@ -79,7 +88,7 @@ const navLinks = [
       isOpen = !isOpen;
 
       if (isOpen) {
-        // 1. Salva la posizione dello scroll e blocca il body fisicamente
+        // 1. Salva lo scroll e blocca il body
         scrollPosition = window.pageYOffset;
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
@@ -87,22 +96,70 @@ const navLinks = [
         document.body.style.width = '100%';
         document.documentElement.style.overflow = 'hidden';
 
-        // Mostra il menu
-        mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
-        mobileMenu?.classList.add('opacity-100', 'pointer-events-auto');
+        // 2. Fai scorrere il pannello da destra
+        mobileMenu?.classList.remove('translate-x-full');
+        mobileMenu?.classList.add('translate-x-0');
 
-        // Trasforma l'hamburger in X
+        // 3. Trasforma Hamburger -> X
         if (bars && bars.length === 3) {
           bars[0].classList.add('translate-y-[8px]', 'rotate-45');
           bars[1].classList.add('opacity-0');
           bars[2].classList.add('-translate-y-[8px]', '-rotate-45');
         }
-      } else {
-        // Nasconde il menu
-        mobileMenu?.classList.remove('opacity-100', 'pointer-events-auto');
-        mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
 
-        // 2. Sblocca il body e ripristina la posizione di scroll
+        // 4. Animazione scritte lettera per lettera
+        let maxCharDelay = 0;
+
+        mobileLinks.forEach((link, linkIdx) => {
+          const chars = link.querySelectorAll('.menu-char');
+          const baseDelay = 380 + linkIdx * 120;
+
+          chars.forEach((char, charIdx) => {
+            const el = char as HTMLElement;
+            const charDelay = baseDelay + charIdx * 30;
+
+            if (charDelay > maxCharDelay) {
+              maxCharDelay = charDelay;
+            }
+
+            setTimeout(() => {
+              if (isOpen) {
+                el.classList.remove('opacity-0', '-translate-x-3');
+                el.classList.add('opacity-100', 'translate-x-0');
+              }
+            }, charDelay);
+          });
+        });
+
+        // 5. Dissolvenza dello sfondo arancione del pulsante CTA per ultimo
+        if (ctaBtn) {
+          const ctaDelay = maxCharDelay + 100;
+          setTimeout(() => {
+            if (isOpen) {
+              ctaBtn.classList.remove('bg-transparent', 'border-transparent');
+              ctaBtn.classList.add('bg-orange');
+            }
+          }, ctaDelay);
+        }
+
+      } else {
+        // 1. Reset immediato dello sfondo del pulsante e delle lettere alla chiusura
+        if (ctaBtn) {
+          ctaBtn.classList.remove('bg-orange');
+          ctaBtn.classList.add('bg-transparent', 'border-transparent');
+        }
+
+        document.querySelectorAll('.menu-char').forEach((char) => {
+          const el = char as HTMLElement;
+          el.classList.remove('opacity-100', 'translate-x-0');
+          el.classList.add('opacity-0', '-translate-x-3');
+        });
+
+        // 2. Fai uscire il pannello verso destra
+        mobileMenu?.classList.remove('translate-x-0');
+        mobileMenu?.classList.add('translate-x-full');
+
+        // 3. Sblocca lo scroll del body
         document.body.style.removeProperty('overflow');
         document.body.style.removeProperty('position');
         document.body.style.removeProperty('top');
@@ -110,7 +167,7 @@ const navLinks = [
         document.documentElement.style.removeProperty('overflow');
         window.scrollTo(0, scrollPosition);
 
-        // Ripristina l'hamburger
+        // 4. Ripristina l'icona Hamburger
         if (bars && bars.length === 3) {
           bars[0].classList.remove('translate-y-[8px]', 'rotate-45');
           bars[1].classList.remove('opacity-0');
