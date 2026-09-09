@@ -29,7 +29,8 @@ const projects = [
     title: 'YarnLog',
     tags: 'Brand Design, Logo Design, Naming',
     aspect: 'aspect-[16/10]',
-    image: '/images/yarnlog.jpg',
+    image: '/images/oink.jpg',
+    video: '/videos/yarnlog-motion-1.mp4',
     href: '/work/yarnlog',
   },
   {
@@ -104,12 +105,25 @@ const projects = [
         >
           <!-- Contenitore Immagine -->
           <div class={`w-full ${project.aspect} rounded-3xl md:rounded-[4x] overflow-hidden bg-black/5 mb-4 relative`}>
-            <img
-              src={project.image}
-              alt={project.title}
-              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              onerror="this.src='https://placehold.co/800x800/e0e0e0/333333?text=placeholder.jpg'"
-            />
+
+            {project.video ? (
+              <video
+                src={project.video}
+                poster={project.image}
+                autoplay
+                loop
+                muted
+                playsinline
+                class="w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src={project.image}
+                alt={project.title}
+                class="w-full h-full object-cover"
+              />
+            )}
+
           </div>
 
           <!-- Info Progetto -->
