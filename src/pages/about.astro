@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const services = [
+  {
+    category: 'Brand Strategy',
+    items: 'Positioning, Targeting, User Personas, Brand Personality, Look & Feel',
+  },
+  {
+    category: 'Brand Identity',
+    items: 'Logo Design, Brand Guidelines, Art Direction, Motion Graphics, Illustration',
+  },
+  {
+    category: 'Digital & Web',
+    items: 'UX/UI Design, App Design, WordPress Development, E-Commerce Design, Web Development',
+  },
+];
+
+const clients = [
+  'Parco Nazionale del Gran Paradiso',
+  'Alfa Romeo',
+  'Museo Egizio',
+  'Lavazza',
+  'Sparco',
+  'Politecnico di Torino',
+  'Paratissima Torino',
+  'Artefatto',
+  'Rai Pubblicità',
+  'Claudio Marchisio',
+  'Kangrats',
+  'Daoud',
+  'Yarnlog',
+];
+---
+
+<Layout title="About | Simone Sgarro Design Studio">
+  <Header />
+
+  <!-- SEZIONE 1: HERO / INTRO -->
+  <section class="w-full px-6 md:px-12 pt-16 pb-24">
+    <!-- Headline Display -->
+    <h1 class="font-display text-display-g leading-[1.05] text-ink mb-20 md:mb-28 max-w-[85%]">
+      Sgarro is a way to see the design. <br class="hidden md:block" />
+      And then is my name
+    </h1>
+
+    <!-- Content Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+      <!-- Colonna Sinistra -->
+      <div class="md:col-span-5 flex flex-col items-start gap-6">
+        <h2 class="font-heading text-h2 font-bold text-ink tracking-tight">
+          Who am I?
+        </h2>
+        <div class="overflow-hidden rounded-full w-36 h-20 md:w-44 md:h-24 bg-brand/10">
+          <img 
+            src="/images/simone-about.jpg" 
+            alt="Simone Sgarro" 
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Colonna Destra -->
+      <div class="md:col-span-7 font-sans text-body-lg leading-relaxed space-y-6">
+        <p>
+          Nice to meet you! I'm Simone Sgarro. I've been a graphic designer for a little over ten years now. 
+          Throughout the years, I've had the chance to look at design from many angles, and that's what led me to the kind of work I do today.
+        </p>
+        <p>
+          As a freelance designer, I help startups and small businesses grow by turning ideas into clear, effective visuals that actually make a difference.
+          I'm into music and sports, but my portfolio is a mix of all sorts of projects — and that's what keeps things fun.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 2: SERVICES / CAPABILITIES (SFONDO SCURO) -->
+  <section class="w-full bg-ink text-bg py-24 md:py-32">
+    <!-- Rimosso max-w-7xl mx-auto per allineamento fluido -->
+    <div class="w-full px-6 md:px-12">
+      <div class="divide-y divide-white/15">
+        {services.map((service) => (
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 py-12 md:py-16 first:pt-0 last:pb-0 items-start">
+            <!-- Categoria (Arancione Mono) -->
+            <div class="md:col-span-5 lg:col-span-5">
+              <span class="font-mono text-sm md:text-base text-orange tracking-wide">
+                {service.category}
+              </span>
+            </div>
+
+            <!-- Elenco Servizi (Funnel Sans H3) -->
+            <div class="md:col-span-7 lg:col-span-7">
+              <h3 class="font-sans font-bold text-h3 leading-tight text-bg/50">
+                {service.items}
+              </h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 3: CLIENTS (SFONDO CHIARO / GREY) -->
+  <section class="w-full bg-bg-alt py-24 md:py-32">
+    <!-- Rimosso max-w-7xl mx-auto per allineamento fluido -->
+    <div class="w-full px-6 md:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+        
+        <!-- Titolo Serif Display -->
+        <div class="md:col-span-5 lg:col-span-5">
+          <h2 class="font-serif text-h1 font-normal leading-[1.1] text-ink max-w-xs md:max-w-lg">
+            Some clients I've worked with
+          </h2>
+        </div>
+
+        <!-- Lista Clienti -->
+        <div class="md:col-span-7 lg:col-span-7">
+          <ul class="font-sans font-bold text-4xl space-y-2 text-ink/50">
+            {clients.map((client) => (
+              <li class="transition-colors hover:text-ink">{client}</li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <FinalCta />
+  <Footer />
+</Layout>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

@@ -1,0 +1,1 @@
+import{n as e,t}from"./ScrollTrigger.Cgjl6ODA.js";e.registerPlugin(t);function n(){let n=document.querySelectorAll(`.project-card`);n.length&&(t.batch(n,{interval:.1,batchMax:3,onEnter:t=>{e.to(t,{opacity:1,y:0,duration:.9,ease:`power3.out`,stagger:.15,overwrite:`auto`})},once:!0}),e.set(n,{y:50,opacity:0}))}n(),document.addEventListener(`astro:page-load`,n);

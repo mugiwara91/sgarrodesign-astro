@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import FinalCta from '../../components/sections/FinalCta.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+// Dati del progetto Monde
+const project = {
+  title: 'Monde',
+  meta: [
+    'Brand Strategy',
+    'Naming',
+    'Logo Design',
+    'Brand System',
+    'Web Design',
+    'Sviluppo Wordpress',
+  ],
+  intro: `Monde nasce con un obiettivo chiaro: ridefinire l'abbigliamento da running, tagliando il superfluo e portando essenzialità, performance e design a un nuovo livello.\nNessuna collezione infinita, nessuna scelta dispersiva. Per ogni categoria, un solo prodotto. Il migliore possibile.\nProgettato nei minimi dettagli, testato in condizioni reali, pensato per chi corre con dedizione e consapevolezza.\nTu scegli solo taglia e colore. Al resto pensiamo noi.\nMonde non è solo un brand, è una direzione. Una community di runner che non seguono le mode, ma i propri obiettivi.\nChi corre con Monde fa parte di una nuova tribù. Più silenziosa, più essenziale, più libera.`,
+  secondText: `Il logo di Monde utilizza linee asciutte e mezza decisione per rappresentare un concetto chiave nel mondo del running: il tempo.\nAl centro, una clessidra stilizzata prende forma dall'intersezione di due "M" speculari — iniziali del nome — che si fondono in un simbolo riconoscibile e potente.\nLa struttura è geometrica, rigorosa, ma al tempo stesso dinamica.\nOgni curva, ogni spigolo smussato è pensato per restituire equilibrio, ritmo e tensione visiva: come una corsa ben calibrata.\nQuesto segno diventa il cuore dell'identità Monde: essenziale, modulare, senza fronzoli.\nUn marchio per chi dà valore a ogni secondo, e corre per restare fedele a sé stesso.`,
+};
+---
+
+<Layout title={`${project.title} | Case Study`}>
+  <div class="bg-black text-white min-h-screen w-full">
+    <Header />
+
+    <main class="w-full">
+      <!-- 1. HERO COVER IMAGE -->
+      <section class="w-full px-6 md:px-12 pt-8 pb-16">
+        <div class="reveal-me opacity-0 w-full aspect-video bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden flex items-center justify-center">
+          <img
+            src="/images//work/monde/monde-cover.jpg"
+            alt={project.title}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </section>
+
+      <!-- 2. PROJECT HEADER INFO -->
+      <section class="w-full px-6 md:px-12 pb-20 md:pb-28">
+        <h1 class="reveal-me opacity-0 font-serif text-5xl md:text-7xl lg:text-8xl text-white tracking-tight mb-12 md:mb-16">
+          {project.title}
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+          <!-- Colonna Sinistra: Metadati / Attività -->
+          <div class="reveal-me opacity-0 md:col-span-6 lg:col-span-6 flex flex-col gap-1">
+            <span class="font-mono text-xs uppercase tracking-widest text-orange mb-2">Attività</span>
+            {project.meta.map((item) => (
+              <span class="font-mono text-xs md:text-sm text-white/80">{item}</span>
+            ))}
+          </div>
+
+          <!-- Colonna Destra: Intro Text -->
+          <div class="reveal-me opacity-0 md:col-span-6 lg:col-span-6 font-sans text-body-lg text-white/90 leading-relaxed whitespace-pre-line">
+            {project.intro}
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. CASE STUDY MEDIA GALLERY -->
+      <section class="w-full px-6 md:px-12 pb-24 space-y-8 md:space-y-12">
+        
+        <!-- Media 1: Griglia 2 colonne - Portrait Photography -->
+        <div class="reveal-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div class="reveal-me opacity-0 w-full aspect-4/5 bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden">
+            <img
+              src="/images//work/monde/monde-bottle.jpg"
+              alt="Runner Hydration"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="reveal-me opacity-0 w-full aspect-4/5 bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden">
+            <img
+              src="/images//work/monde/monde-shirt.jpg"
+              alt="Runner Portrait"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+  
+<!--         <div class="reveal-me opacity-0 w-full aspect-video bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden">
+          <img
+            src="/images//work/monde/monde-bottle.jpg"
+            alt="Monde Runners Group"
+            class="w-full h-full object-cover"
+          />
+        </div> -->
+
+        <!-- Media 3: Griglia 2 colonne - Grid Construction + Acid Green Brandmark -->
+        <div class="reveal-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div class="reveal-me opacity-0 w-full aspect-square bg-neutral-100 rounded-2xl md:rounded-3xl overflow-hidden">
+            <img
+            src="/images//work/monde/monde-grid.jpg"
+              alt="Logo Construction Grid"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="reveal-me opacity-0 w-full aspect-square bg-[#ccff00] rounded-2xl md:rounded-3xl overflow-hidden">
+            <img
+            src="/images//work/monde/monde-yellow.jpg"
+              alt="Monde Brandmark Acid Green"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- Blocco Testo Intermedio -->
+        <div class="w-full py-12 md:py-16">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div class="reveal-me opacity-0 md:col-start-5 md:col-span-8 lg:col-start-4 lg:col-span-9 font-sans text-body-lg text-white/90 leading-relaxed whitespace-pre-line">
+              {project.secondText}
+            </div>
+          </div>
+        </div>
+
+        <!-- Media 4: Urban Billboard Outdoor Mockup -->
+        <div class="reveal-me opacity-0 w-full aspect-video bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden">
+          <img
+            src="/images//work/monde/monde-poster.jpg"
+            alt="Monde Outdoor Billboard"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+      </section>
+
+      <!-- 4. BOTTOM PROJECT NAVIGATION -->
+      <section class="reveal-me opacity-0 w-full px-6 md:px-12 py-12 border-t border-white/10">
+        <div class="flex justify-between items-center font-mono text-xs md:text-sm uppercase tracking-widest">
+          <a
+            href="/work"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 hover:border-white hover:bg-white hover:text-black transition-all"
+          >
+            <span>&lt;</span> GO BACK
+          </a>
+
+          <a
+            href="/work/next-project"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 hover:border-white hover:bg-white hover:text-black transition-all"
+          >
+            GO NEXT <span>&gt;</span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <FinalCta />
+  <Footer />
+</Layout>
+
+<!-- SCRIPT GSAP & SCROLLTRIGGER -->
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animazione per elementi singoli
+  const singleElements = document.querySelectorAll('.reveal-me:not(.reveal-grid .reveal-me)');
+  
+  singleElements.forEach((el) => {
+    gsap.fromTo(
+      el,
+      {
+        y: 45,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+
+  // Animazione a cascata (stagger) per le griglie a 2 colonne
+  const grids = document.querySelectorAll('.reveal-grid');
+  
+  grids.forEach((grid) => {
+    const items = grid.querySelectorAll('.reveal-me');
+    gsap.fromTo(
+      items,
+      {
+        y: 45,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: grid,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+</script>

@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const projects = [
+  {
+    title: 'Monde',
+    tags: 'Brand Design, Logo Design, Naming',
+    aspect: 'aspect-[3/4]',
+    image: '/images/monde.jpg',
+    href: '/work/monde',
+  },
+  {
+    title: 'Oink bike',
+    tags: 'Brand Design, Logo Design, Naming',
+    aspect: 'aspect-square',
+    image: '/images/oink.jpg',
+    href: '/work/oink-bike',
+  },
+  /*{
+    title: 'Kangrats',
+    tags: 'Brand Design, Logo Design, Naming',
+    aspect: 'aspect-[4/3]',
+    image: '/images/kangrats.jpg',
+    href: '/work/kangrats',
+  },*/
+  {
+    title: 'YarnLog',
+    tags: 'Brand Design, Logo Design, Naming',
+    aspect: 'aspect-[16/10]',
+    image: '/images/yarnlog.jpg',
+    href: '/work/yarnlog',
+  },
+  {
+    title: 'Kangrats',
+    tags: 'UX/UI Design, App Design, Illustration',
+    aspect: 'aspect-[9/16]',
+    image: '/images/kangrats-app.jpg',
+    href: '/work/kangrats',
+  },
+  {
+    title: 'Bari Football',
+    tags: 'Brand Design, Logo Design, Naming',
+    aspect: 'aspect-square',
+    image: '/images/ssc-bari.jpg',
+    href: '/work/bari-football',
+  },
+  {
+    title: 'Sogar',
+    tags: 'Illustration, Brand Identity Design',
+    aspect: 'aspect-square',
+    image: '/images/sogar.jpg',
+    href: '/work/sogar',
+  },
+/*   {
+    title: 'Le torte di ottinaisen',
+    tags: 'Web Design, e-Commerce',
+    aspect: 'aspect-[4/3]',
+    image: '/images/ottinaisen.jpg',
+    href: '/work/le-torte-di-ottinaisen',
+  }, */
+/*   {
+    title: 'Artefatto',
+    tags: 'Brand Design, Logo Design',
+    aspect: 'aspect-[16/10]',
+    image: '/images/artefatto.jpg',
+    href: '/work/artefatto',
+  },
+  {
+    title: 'RoxyWeb',
+    tags: 'Brand Design, Logo Design',
+    aspect: 'aspect-[3/4]',
+    image: '/images/roxyweb.jpg',
+    href: '/work/roxyweb',
+  },
+  {
+    title: 'Ultimate Arena',
+    tags: 'Web Design, e-Commerce',
+    aspect: 'aspect-[3/4]',
+    image: '/images/ultimate-arena.jpg',
+    href: '/work/ultimate-arena',
+  },
+  {
+    title: 'CTRLz',
+    tags: 'Brand Design, Logo Design',
+    aspect: 'aspect-square',
+    image: '/images/placeholder.jpg',
+    href: '/work/ctrlz',
+  }, */
+];
+---
+
+<Layout title="Work | Simone Sgarro Design Studio">
+  <Header />
+  
+  <main class="max-w-[1600px] mx-auto px-6 md:px-10  pb-20">
+    <!-- Contenitore Masonry -->
+    <div class="masonry-grid">
+      {projects.map((project) => (
+        <a
+          href={project.href}
+          class="project-card masonry-item group block mb-10 md:mb-12 cursor-pointer opacity-0"
+        >
+          <!-- Contenitore Immagine -->
+          <div class={`w-full ${project.aspect} rounded-3xl md:rounded-[4x] overflow-hidden bg-black/5 mb-4 relative`}>
+            <img
+              src={project.image}
+              alt={project.title}
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              onerror="this.src='https://placehold.co/800x800/e0e0e0/333333?text=placeholder.jpg'"
+            />
+          </div>
+
+          <!-- Info Progetto -->
+          <div class="flex flex-col gap-1">
+            <h3 class="font-sans font-bold text-h3 leading-snug group-hover:opacity-75 transition-opacity">
+              {project.title}
+            </h3>
+            <p class="font-mono text-xs md:text-sm tracking-wider uppercase opacity-70">
+              {project.tags}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Masonry CSS */
+  .masonry-grid {
+    column-count: 1;
+    column-gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 2.5rem;
+    }
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+    will-change: transform, opacity;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initWorkAnimations() {
+    const cards = document.querySelectorAll('.project-card');
+
+    if (!cards.length) return;
+
+    ScrollTrigger.batch(cards, {
+      interval: 0.1,
+      batchMax: 3,
+      onEnter: (batch) => {
+        gsap.to(batch, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.15,
+          overwrite: 'auto',
+        });
+      },
+      once: true,
+    });
+
+    gsap.set(cards, { y: 50, opacity: 0 });
+  }
+
+  initWorkAnimations();
+  document.addEventListener('astro:page-load', initWorkAnimations);
+</script>

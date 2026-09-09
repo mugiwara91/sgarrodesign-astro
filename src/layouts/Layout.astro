@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+import { ClientRouter, fade } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+  hasGrid?: boolean; // Attiva di default, impostala su false nelle pagine dei case study scuri
+}
+
+const { 
+  title, 
+  description = 'Simone Sgarro Design Studio', 
+  hasGrid = true 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- View Transitions di Astro -->
+    <ClientRouter />
+  </head>
+  <body class="bg-background text-ink relative min-h-screen antialiased">
+    
+    <!-- Griglia vettoriale fissa in CSS puro -->
+    {hasGrid && (
+      <div 
+        class="fixed inset-0 pointer-events-none z-0 opacity-10"
+        style="background-image: linear-gradient(to right, #fb51cb 1px, transparent 1px), linear-gradient(to bottom, #fb51cb 1px, transparent 1px); background-size: 40px 40px;"
+      />
+    )}
+
+    <!-- Contenuto del sito con animazione fade integrata -->
+    <div class="relative z-10" transition:animate={fade({ duration: '0.2s' })}>
+      <slot />
+    </div>
+
+    <!-- Script dello smooth scroll compatibile con le View Transitions -->
+    <script>
+      import Lenis from 'lenis';
+      import gsap from 'gsap';
+      import ScrollTrigger from 'gsap/ScrollTrigger';
+
+      let lenis: Lenis | null = null;
+
+      function initScroll() {
+        // Pulisci l'istanza precedente se esiste
+        if (lenis) {
+          lenis.destroy();
+        }
+
+        lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis?.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      // Inizializza al primo caricamento
+      initScroll();
+
+      // Re-inizializza ad ogni cambio pagina gestito da ClientRouter
+      document.addEventListener('astro:page-load', () => {
+        initScroll();
+        window.scrollTo(0, 0);
+      });
+    </script>
+  </body>
+</html>
