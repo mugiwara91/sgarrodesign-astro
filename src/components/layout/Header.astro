@@ -45,7 +45,7 @@ const navLinks = [
     <!-- MENU OVERLAY MOBILE -->
     <div
       id="mobile-menu"
-      class="fixed inset-0 w-screen h-screen bg-black/95 backdrop-blur-md flex flex-col justify-center items-center gap-8 md:hidden z-50 overflow-hidden transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] translate-x-full"
+      class="fixed inset-0 w-screen h-screen bg-black backdrop-blur-md flex flex-col justify-center items-center gap-8 md:hidden z-50 overflow-hidden transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] translate-x-full"
     >
       {navLinks.map((link, linkIdx) => {
         const letters = link.label.split('');
@@ -55,7 +55,7 @@ const navLinks = [
             data-link-index={linkIdx}
             class={
               link.isCta
-                ? 'mobile-link cta-btn inline-block text-white px-8 py-3 rounded-full hover:opacity-90 transition-all duration-500 ease-out text-2xl font-bold mt-4 '
+                ? 'mobile-link cta-btn inline-block text-white px-8 py-3 rounded-full hover:opacity-90 transition-all duration-500 ease-out text-3xl font-bold mt-4 '
                 : 'mobile-link block text-white hover:opacity-70 transition-opacity text-4xl sm:text-5xl font-bold tracking-tight text-center'
             }
           >
