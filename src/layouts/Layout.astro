@@ -5,14 +5,16 @@ import { ClientRouter, fade } from 'astro:transitions';
 interface Props {
   title: string;
   description?: string;
-  hasGrid?: boolean; // Attiva di default, impostala su false nelle pagine dei case study scuri
+  hasGrid?: boolean;
 }
 
 const { 
   title, 
-  description = 'Simone Sgarro Design Studio', 
+  description = 'Sgarro Design', 
   hasGrid = true 
 } = Astro.props;
+
+const gaId = import.meta.env.PUBLIC_GA_TRACKING_ID;
 ---
 
 <!doctype html>
@@ -25,6 +27,22 @@ const {
 
     <!-- View Transitions di Astro -->
     <ClientRouter />
+
+    {gaId && (
+      <>
+        <script
+          type="text/partytown"
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+        ></script>
+        <script type="text/partytown" set:html={`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${gaId}');
+        `} />
+      </>
+    )}
   </head>
   <body class="bg-background text-ink relative min-h-screen antialiased">
     
@@ -41,7 +59,7 @@ const {
       <slot />
     </div>
 
-    <!-- Script dello smooth scroll compatibile con le View Transitions -->
+    <!-- Script dello smooth scroll e tracciamento pagine GA4 -->
     <script>
       import Lenis from 'lenis';
       import gsap from 'gsap';
@@ -50,7 +68,6 @@ const {
       let lenis: Lenis | null = null;
 
       function initScroll() {
-        // Pulisci l'istanza precedente se esiste
         if (lenis) {
           lenis.destroy();
         }
@@ -73,10 +90,19 @@ const {
       // Inizializza al primo caricamento
       initScroll();
 
-      // Re-inizializza ad ogni cambio pagina gestito da ClientRouter
+      // Re-inizializza ad ogni cambio pagina e invia la nuova vista a Google Analytics
       document.addEventListener('astro:page-load', () => {
         initScroll();
         window.scrollTo(0, 0);
+
+        // Traccia la nuova vista pagina su GA4 ad ogni cambio di rotta
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', 'page_view', {
+            page_title: document.title,
+            page_location: window.location.href,
+            page_path: window.location.pathname,
+          });
+        }
       });
     </script>
   </body>
