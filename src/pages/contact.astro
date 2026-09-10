@@ -19,7 +19,7 @@ import Footer from '../components/layout/Footer.astro';
         If you’re looking to refresh your brand, build one from scratch, or just have a chat to figure out how to make it grow — get in touch and let’s see how we can create something great together.
       </p>
 
-      <!-- Form -->
+<!-- Form -->
       <form id="contact-form" class="flex flex-col gap-4 text-left relative">
         <!-- CHIAVE API WEB3FORMS (Sostituisci con la tua access_key) -->
         <input type="hidden" name="access_key" value="12b09681-45b3-4887-9af0-303c72de3cec" />
@@ -79,11 +79,25 @@ import Footer from '../components/layout/Footer.astro';
           ></textarea>
         </div>
 
+        <!-- Checkbox Privacy Policy (GDPR Compliance) -->
+        <div class="flex items-start gap-3 mt-2 px-1">
+          <input
+            type="checkbox"
+            id="privacy"
+            name="privacy"
+            required
+            class="mt-1 h-4 w-4 rounded border-gray-300 text-black focus:ring-black/20 accent-black cursor-pointer"
+          />
+          <label for="privacy" class="text-xs text-ink/70 leading-relaxed cursor-pointer select-none">
+            I have read and agree to the <a href="/privacy-policy" class="underline hover:text-ink transition-colors">Privacy Policy</a>.
+          </label>
+        </div>
+
         <!-- Messaggio di stato dell'invio -->
         <div id="form-status" class="hidden text-center py-2 font-mono text-sm rounded-lg transition-all"></div>
 
         <!-- Submit Button -->
-        <div class="flex justify-center mt-8">
+        <div class="flex justify-center mt-6">
           <button
             type="submit"
             id="submit-btn"

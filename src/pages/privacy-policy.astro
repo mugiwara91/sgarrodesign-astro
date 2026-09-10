@@ -1,56 +1,99 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
 ---
 
-<Layout title="Privacy Policy | Sgarro Design">
-  <Header />
+<Layout title="Privacy & Cookie Policy - Sgarro Design">
+  <main class="max-w-3xl mx-auto px-6 py-20 text-ink">
+    <h1 class="text-3xl md:text-4xl font-bold mb-8">Privacy & Cookie Policy</h1>
+    <p class="text-xs opacity-60 mb-12">Ultimo aggiornamento: Settembre 2026</p>
 
-  <main class="pt-28 md:pt-36 pb-24 px-6 max-w-4xl mx-auto font-sans text-ink">
-    <h1 class="font-serif text-4xl md:text-6xl mb-8">Privacy Policy</h1>
-    
-    <div class="space-y-6 text-body-lg leading-relaxed opacity-90">
-      <p>Ultimo aggiornamento: 9 Settembre 2026</p>
+    <div class="space-y-10 text-sm leading-relaxed opacity-90">
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold text-ink">1. Titolare del Trattamento dei Dati</h2>
+        <p>Il Titolare del Trattamento è:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Titolare:</strong> Sgarro Simone</li>
+          <li><strong>Sede:</strong> Moncalieri (TO), Italia</li>
+          <li><strong>P.IVA:</strong> 12883250016</li>
+          <li><strong>Email di contatto:</strong> <a href="mailto:sgarrodesign@gmail.com" class="underline hover:opacity-100">sgarrodesign@gmail.com</a></li>
+        </ul>
+      </section>
 
-      <h2 class="text-2xl font-bold font-serif pt-4">1. Titolare del Trattamento dei Dati</h2>
-      <p>
-        Il Titolare del Trattamento è <strong>Sgarro Design</strong>.<br />
-        Email di contatto: <a href="mailto:sgarrodesign@gmail.com" class="underline">sgarrodesign@gmail.com</a>
-      </p>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold text-ink">2. Dati Raccoglititi e Finalità del Trattamento</h2>
+        
+        <h3 class="text-base font-medium text-ink pt-2">A. Modulo di Contatto (Form)</h3>
+        <p>
+          Quando compili il modulo di contatto presente sul sito, raccogliamo i dati forniti volontariamente (es. nome, indirizzo email, messaggio).
+        </p>
+        <p>
+          <strong>Finalità:</strong> I dati vengono raccolti ed elaborati esclusivamente per rispondere alle richieste di informazioni o preventivi.<br />
+          <strong>Servizio utilizzato:</strong> L'invio delle e-mail avviene tramite il servizio di terze parti <strong>Web3Forms</strong>. I dati inseriti nel form vengono trasmessi in modo sicuro ai server di Web3Forms al solo scopo di recapitare il messaggio alla casella di posta elettronica del Titolare e non vengono memorizzati per finalità di profilazione o marketing.
+        </p>
 
-      <h2 class="text-2xl font-bold font-serif pt-4">2. Tipologia di Dati Raccolti</h2>
-      <p>
-        Attraverso il modulo di contatto presente sul sito raccogliamo i seguenti dati forniti volontariamente dall'utente:
-      </p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Nome e Cognome</li>
-        <li>Indirizzo Email</li>
-        <li>Numero di telefono (opzionale)</li>
-        <li>Nome dell'azienda (opzionale)</li>
-        <li>Messaggio/Contenuto della richiesta</li>
-      </ul>
+        <h3 class="text-base font-medium text-ink pt-2">B. Dati di Navigazione e Statistiche (Google Analytics 4)</h3>
+        <p>
+          Questo sito utilizza <strong>Google Analytics 4 (GA4)</strong>, un servizio di analisi web fornito da Google LLC. GA4 raccoglie dati aggregati ed anonimizzati relativi alle visite (es. pagine viste, tempo di permanenza, dispositivo utilizzato).
+        </p>
+        <p>
+          <strong>Finalità:</strong> Analisi statistica del traffico web per migliorare l'esperienza di navigazione.<br />
+          <strong>Consenso:</strong> L'attivazione di Google Analytics avviene <strong>esclusivamente previo consenso esplicito</strong> dell'utente tramite il banner cookie (Google Consent Mode v2). In assenza di consenso, nessun cookie o dato di tracciamento analitico viene memorizzato.
+        </p>
+      </section>
 
-      <h2 class="text-2xl font-bold font-serif pt-4">3. Finalità del Trattamento</h2>
-      <p>
-        I dati raccolti vengono utilizzati esclusivamente per rispondere alle richieste di informazioni, preventivi o collaborazioni inviate dall'utente tramite il modulo di contatto.
-      </p>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold text-ink">3. Tipologia di Cookie Utilizzati</h2>
+        <p>Il presente sito utilizza le seguenti categorie di cookie e tecnologie di archiviazione locale:</p>
+        <ol class="list-decimal pl-5 space-y-2">
+          <li>
+            <strong>Cookie e Archiviazione Tecnica (Necessari):</strong><br />
+            <code>cookie_consent</code> (<em>localStorage</em>): Memorizza la preferenza espressa in merito all'accettazione o al rifiuto dei cookie analitici. Durata: Permanente fino a cancellazione manuale delle impostazioni del browser.
+          </li>
+          <li>
+            <strong>Cookie Analitici (Previo Consenso):</strong><br />
+            <code>_ga</code>, <code>_ga_*</code>: Utilizzati da Google Analytics 4 per misurare e analizzare le interazioni sul sito in forma anonimizzata.
+          </li>
+        </ol>
+      </section>
 
-      <h2 class="text-2xl font-bold font-serif pt-4">4. Servizi di Terze Parti</h2>
-      <p>
-        Per l'erogazione del sito e la gestione delle comunicazioni ci avvaliamo dei seguenti servizi:
-      </p>
-      <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Netlify:</strong> Servizio di hosting del sito web.</li>
-        <li><strong>Web3Forms:</strong> Servizio di elaborazione dei moduli di contatto per l'inoltro delle email. I dati inseriti nel form transitano attraverso Web3Forms al solo scopo di recapitare il messaggio.</li>
-      </ul>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold text-ink">4. Base Giuridica del Trattamento</h2>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Form di Contatto:</strong> Esecuzione di misure precontrattuali o contrattuali su richiesta dell'interessato (Art. 6.1.b GDPR).</li>
+          <li><strong>Google Analytics:</strong> Consenso dell'interessato espressamente fornito tramite il banner cookie (Art. 6.1.a GDPR).</li>
+        </ul>
+      </section>
 
-      <h2 class="text-2xl font-bold font-serif pt-4">5. Diritti dell'Utente</h2>
-      <p>
-        In conformità al GDPR, l'utente ha il diritto di accedere, rettificare, cancellare o richiedere la limitazione del trattamento dei propri dati personali in qualsiasi momento inviando una mail a <a href="mailto:sgarrodesign@gmail.com" class="underline">sgarrodesign@gmail.com</a>.
-      </p>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold text-ink">5. Gestione e Revoca del Consenso ai Cookie</h2>
+        <p>
+          In qualsiasi momento puoi modificare o revocare il consenso espresso sui cookie analitici utilizzando il link 
+          <button id="reset-cookie-btn" class="underline font-medium hover:opacity-100 cursor-pointer">"Preferenze Cookie"</button> 
+          presente nel footer del sito oppure cancellando i dati di navigazione dalle impostazioni del tuo browser.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold text-ink">6. Diritti dell'Interessato</h2>
+        <p>
+          Ai sensi degli artt. 15-22 del Regolamento UE 2016/679 (GDPR), hai il diritto di accedere ai tuoi dati personali, chiederne la rettifica, la cancellazione, la limitazione del trattamento o di opporti al loro utilizzo.
+        </p>
+        <p>
+          Per esercitare i tuoi diritti puoi inviare una richiesta scritta al Titolare all'indirizzo email: 
+          <a href="mailto:sgarrodesign@gmail.com" class="underline hover:opacity-100">sgarrodesign@gmail.com</a>.
+        </p>
+      </section>
     </div>
   </main>
-
-  <Footer />
 </Layout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const resetBtn = document.getElementById('reset-cookie-btn');
+    const banner = document.getElementById('cookie-banner');
+
+    resetBtn?.addEventListener('click', () => {
+      banner?.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+    });
+  });
+</script>

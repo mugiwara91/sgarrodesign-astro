@@ -25,8 +25,25 @@
       <!-- Colonna 2: Dati fiscali e note legali -->
       <div class="md:col-span-4 lg:col-span-3 text-body-lg flex flex-col gap-2">
         <p>P.IVA: 12883250016</p>
-        <a href="/cookie-policy" class="underline underline-offset-4 hover:opacity-80 transition-opacity">Cookie Policy</a>
-        <a href="/privacy-policy" class="underline underline-offset-4 hover:opacity-80 transition-opacity">Privacy Policy</a>
+        <a href="/privacy-policy" class="underline underline-offset-4 hover:opacity-80 transition-opacity">Privacy & Cookie Policy</a>
+
+<!-- Pulsante per riaprire cookie banner e cambiare idea -->
+<span id="open-cookie-settings" class="underline underline-offset-4 hover:opacity-80 transition-opacity">
+  Cookie Preferences
+</span>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const openBtn = document.getElementById('open-cookie-settings');
+    const banner = document.getElementById('cookie-banner');
+
+    openBtn?.addEventListener('click', () => {
+      // Mostra di nuovo il banner
+      banner?.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+    });
+  });
+</script>
+
       </div>
 
       <!-- Colonna 3: Social -->
@@ -44,4 +61,7 @@
       </p>
     </div>
   </div>
+
+
+  
 </footer>

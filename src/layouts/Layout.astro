@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ClientRouter, fade } from 'astro:transitions';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
   title: string;
@@ -30,14 +31,26 @@ const gaId = import.meta.env.PUBLIC_GA_TRACKING_ID;
 
     {gaId && (
       <>
+        <!-- 1. Consent Mode v2: Imposta il consenso iniziale su 'denied' -->
+        <script type="text/partytown" set:html={`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        `} />
+
+        <!-- 2. Caricamento Google Analytics -->
         <script
           type="text/partytown"
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
         ></script>
         <script type="text/partytown" set:html={`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${gaId}');
         `} />
@@ -58,6 +71,9 @@ const gaId = import.meta.env.PUBLIC_GA_TRACKING_ID;
     <div class="relative z-10" transition:animate={fade({ duration: '0.2s' })}>
       <slot />
     </div>
+
+    <!-- Banner Cookie Custom -->
+    <CookieBanner />
 
     <!-- Script dello smooth scroll e tracciamento pagine GA4 -->
     <script>

@@ -1,0 +1,84 @@
+---
+// src/components/CookieBanner.astro
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md bg-bg text-background p-5 rounded-lg shadow-2xl z-50 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none border border-background/10"
+>
+  <div class="space-y-3">
+    <h3 class="font-medium text-base">Preferenze Riservatezza & Cookie</h3>
+    <p class="text-xs leading-relaxed opacity-80">
+      Questo sito utilizza cookie tecnici e analitici anonimizzati per migliorare l'esperienza di navigazione. Puoi scegliere di accettare tutti i cookie o proseguire con i soli cookie tecnici.
+    </p>
+    <div class="flex items-center gap-3 pt-2">
+      <button
+        id="accept-cookies"
+        class="px-4 py-2 bg-background bg-brand text-white hover:bg-background/90 text-xs font-semibold rounded transition-colors"
+      >
+        Accetta tutti
+      </button>
+      <button
+        id="decline-cookies"
+        class="px-4 py-2 bg-transparent hover:bg-background/10 text-background border border-background/20 text-xs font-medium rounded transition-colors"
+      >
+        Solo necessari
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const declineBtn = document.getElementById('decline-cookies');
+
+    if (!banner || !acceptBtn || !declineBtn) return;
+
+    // Controlla lo stato salvato nel localStorage
+    const consent = localStorage.getItem('cookie_consent');
+
+    if (!consent) {
+      // Nessuna scelta salvata: mostra il banner
+      banner.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+    } else if (consent === 'granted') {
+      // Consenso già dato in precedenza: aggiorna GA4
+      updateGaConsent('granted');
+    }
+
+    // Gestione Click "Accetta"
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookie_consent', 'granted');
+      updateGaConsent('granted');
+      hideBanner(banner);
+    });
+
+    // Gestione Click "Solo necessari"
+    declineBtn.addEventListener('click', () => {
+      localStorage.setItem('cookie_consent', 'denied');
+      updateGaConsent('denied');
+      hideBanner(banner);
+    });
+  }
+
+  function updateGaConsent(status: 'granted' | 'denied') {
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('consent', 'update', {
+        analytics_storage: status,
+      });
+    }
+  }
+
+  function hideBanner(banner: HTMLElement) {
+    banner.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+  }
+
+  // Esegui al caricamento iniziale
+  initCookieBanner();
+
+  // Supporto alle View Transitions (ClientRouter)
+  document.addEventListener('astro:page-load', () => {
+    initCookieBanner();
+  });
+</script>
