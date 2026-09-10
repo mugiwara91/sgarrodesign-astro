@@ -8,14 +8,12 @@ import Footer from '../../components/layout/Footer.astro';
 const project = {
   title: 'Sogar Music',
   meta: [
-    'Brand Strategy',
-    'Naming',
-    'Logo Design',
-    'Brand System',
-    'Web Design',
-    'Sviluppo Wordpress',
+    'Illustration',
+    'Product Design',
   ],
-  intro: `L'illustrazione di questa cover rappresenta le case popolari di Via Roveda, un quartiere importante per la città di Torino e per quello che ha rappresentato negli anni della Fiat e del boom economico della città.\n\nMa molto importante lo è anche per Sogar (anagramma del mio nome per quando mi travesto da musicista). Quelle case sono il luogo in cui da bambino ho scoperto la musica, pur senza prendere in mano uno strumento o quasi e in cui conservo tanti ricordi felici passati a casa dei nonni.\n\nSogar è un musicista multi-strumentista che mischia chitarra, basso, tastiere e fiati per creare dei beat. Su youtube è presente qualche suo brano e presto ne arriveranno altri.`,
+    intro: `The illustration on this cover depicts the public housing of Via Roveda, an important neighborhood in Turin, significant for its history during the Fiat years and the city’s economic boom.
+It’s also very meaningful for Sogar (an anagram of my name for when I perform as a musician). These buildings are where I discovered music as a child, even without really playing an instrument, and where I hold many happy memories spent at my grandparents’ home.
+Sogar is a multi-instrumentalist musician who blends guitar, bass, keyboards, and brass to create beats. Some of his tracks are available on YouTube, with more `,
 };
 ---
 
@@ -28,7 +26,7 @@ const project = {
       <section class="w-full px-6 md:px-12 pt-8 pb-16">
         <div class="reveal-me opacity-0 w-full aspect-video bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden flex items-center justify-center">
           <img
-            src="/images//work/sogar/sogar-illustration.png"
+            src="/images/work/sogar/sogar-mockup.png"
             alt={project.title}
             class="w-full h-full object-cover"
           />
@@ -59,29 +57,41 @@ const project = {
 
       <!-- 3. CASE STUDY MEDIA GALLERY -->
       <section class="w-full px-6 md:px-12 pb-24 space-y-8 md:space-y-12">
+
+
+      <!-- Media 2: Via Roveda Buildings Illustration Wide -->
+        <div class="reveal-me opacity-0 w-full aspect-video bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden">
+          <img
+            src="/images//work/sogar/sogar-illustration.webp"
+            alt="Via Roveda Turin Buildings Illustration"
+            class="w-full h-full object-cover"
+          />
+        </div>
         
         <!-- Media 1: Griglia 2 colonne - Cover Art Artwork + Purple Vinyl Disc -->
         <div class="reveal-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <div class="reveal-me opacity-0 w-full aspect-square bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden">
             <img
-            src="/images//work/sogar/sogar-cover.png"
+            src="/images/work/sogar/sogar-cover.webp"
               alt="Simon Sogar - Childhood Album Artwork"
               class="w-full h-full object-cover"
             />
           </div>
           <div class="reveal-me opacity-0 w-full aspect-square bg-neutral-950 rounded-2xl md:rounded-3xl overflow-hidden">
             <img
-            src="/images//work/sogar/sogar-inside.png"
+            src="/images//work/sogar/sogar-vynil.webp"
               alt="Sogar Childhood Purple Vinyl"
               class="w-full h-full object-cover"
             />
           </div>
         </div>
 
+
+
         <!-- Media 2: Via Roveda Buildings Illustration Wide -->
         <div class="reveal-me opacity-0 w-full aspect-video bg-neutral-900 rounded-2xl md:rounded-3xl overflow-hidden">
           <img
-            src="/images//work/sogar/sogar-mockup.png"
+            src="/images//work/sogar/sogar-inside.webp"
             alt="Via Roveda Turin Buildings Illustration"
             class="w-full h-full object-cover"
           />
@@ -102,7 +112,7 @@ const project = {
           </a>
 
           <a
-            href="/work/next-project"
+            href="/work/oink-bike"
             class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 hover:border-white hover:bg-white hover:text-black transition-all"
           >
             GO NEXT <span>&gt;</span>
